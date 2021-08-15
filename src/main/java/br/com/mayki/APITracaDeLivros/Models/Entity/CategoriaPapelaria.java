@@ -6,7 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value = "CAT-PAPELARIA")
+@DiscriminatorValue(value = "PAPELARIA")
 public class CategoriaPapelaria extends Categoria {
 
 	public CategoriaPapelaria() {}

@@ -16,7 +16,6 @@
 	<description>API desenvolvida para estudo. O objetivo é desenvolver uma api que forneça os dados para montar um site de livros</description>
 	<properties>
 		<java.version>11</java.version>
-		<vaadin.version>14.6.5</vaadin.version>
 	</properties>
 	<dependencies>
 

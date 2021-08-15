@@ -25,9 +25,9 @@ public abstract class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(length = 100, nullable = false)
+	@Column(length = 150, nullable = false)
 	private String nome;
-	@Column(nullable = false)
+	@Column(nullable = false, length = 600)
 	private String descricao;
 	@Column(nullable = false, precision = 2, scale = 2)
 	private BigDecimal porcentagemDesconto;
@@ -39,7 +39,7 @@ public abstract class Produto {
 	private Fornecedor fornecedor;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Funcionario funcionario;
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Estoque estoque;
 	@Column(nullable = false)
 	private Boolean disponivel;
@@ -48,12 +48,15 @@ public abstract class Produto {
 	private LocalDate updated_at;
 	@Column(nullable = false)
 	private Boolean delete_soft;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produto")
+	private List<Imagem> imagem;
 
 	public Produto() {
 	}
 
-	public Produto(String nome, String descricao, BigDecimal valor, BigDecimal porcentagemDesconto, List<Categoria> categoria,
-			Fornecedor fornecedor, Funcionario funcionario, Estoque estoque, Boolean disponivel) {
+	public Produto(String nome, String descricao, BigDecimal valor, BigDecimal porcentagemDesconto,
+			List<Categoria> categoria, Fornecedor fornecedor, Funcionario funcionario, Estoque estoque,
+			Boolean disponivel) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.porcentagemDesconto = porcentagemDesconto;
@@ -67,6 +70,13 @@ public abstract class Produto {
 		this.delete_soft = false;
 	}
 
+	public List<Imagem> getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(List<Imagem> imagem) {
+		this.imagem = imagem;
+	}
 
 	public Long getId() {
 		return id;

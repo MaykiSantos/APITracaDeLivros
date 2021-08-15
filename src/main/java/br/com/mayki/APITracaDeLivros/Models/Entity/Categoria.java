@@ -20,7 +20,7 @@ import javax.persistence.ManyToOne;
 public abstract class Categoria {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false)
 	private String nome;

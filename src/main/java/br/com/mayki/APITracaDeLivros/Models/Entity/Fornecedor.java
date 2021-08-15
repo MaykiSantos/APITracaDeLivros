@@ -18,8 +18,10 @@ public class Fornecedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(nullable = false, length = 14, unique = true)
+	@Column(nullable = false, length = 18, unique = true)
 	private String cnpj;
+	@Column(nullable = false, length = 15, unique = true)
+	private String inscricaoEstadual;
 	@Column(nullable = false, length = 60)
 	private String nome;
 	@Column(nullable = false, length = 60)
@@ -30,7 +32,7 @@ public class Fornecedor {
 	private String cidade;
 	@Column(nullable = false, length = 8)
 	private String cep;
-	@Column(nullable = false)
+	@Column(nullable = false, length = 10)
 	private String numero;
 	@Column(nullable = false, length = 20)
 	private String telefone_01;
@@ -57,10 +59,11 @@ public class Fornecedor {
 	public Fornecedor() {
 	}
 
-	public Fornecedor(String cnpj, String nome, String rua, String bairro, String cidade, String cep, String numero,
+	public Fornecedor(String cnpj, String inscricaoEstadual ,String nome, String rua, String bairro, String cidade, String cep, String numero,
 			String telefone_01, String telefone_02, String telefone_03, String email_01, String email_02,
 			String email_03) {
 		this.cnpj = cnpj;
+		this.inscricaoEstadual = inscricaoEstadual;
 		this.nome = nome;
 		this.rua = rua;
 		this.bairro = bairro;

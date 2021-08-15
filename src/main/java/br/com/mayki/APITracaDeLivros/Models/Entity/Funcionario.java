@@ -21,7 +21,7 @@ public class Funcionario {
 	private Long id;
 	@Column(nullable = false, length = 100)
 	private String nome;
-	@Column(nullable = false, length = 10)
+	@Column(nullable = false, length = 14)
 	private String cpf;
 	@Column(nullable = false)
 	private Boolean ativo;

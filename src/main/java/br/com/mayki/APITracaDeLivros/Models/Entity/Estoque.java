@@ -1,6 +1,7 @@
 package br.com.mayki.APITracaDeLivros.Models.Entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -25,8 +27,8 @@ public class Estoque {
 	private LocalDate updated_at;
 	@Column(nullable = false)
 	private Boolean delete_soft;
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "estoque")
-	private Produto produto;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "estoque")
+	private List<Produto> produto;
 
 	public Estoque() {
 	}
@@ -38,11 +40,11 @@ public class Estoque {
 		this.delete_soft = false;
 	}
 
-	public Produto getProduto() {
+	public List<Produto> getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
 

@@ -21,11 +21,11 @@ public class Cliente {
 	private String nome;
 	@Column(nullable = false)
 	private LocalDate dataNascimento;
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;
 	@Column(nullable = false)
 	private String senha;
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String cpf;
 	@Column(nullable = false)
 	private String telefone_01;

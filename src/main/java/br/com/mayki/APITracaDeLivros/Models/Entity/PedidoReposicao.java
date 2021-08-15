@@ -21,10 +21,11 @@ public class PedidoReposicao {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Funcionario funcionario;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	private Funcionario fornecedor;
-	@Column(nullable = false)
+	private Fornecedor fornecedor;
+	@Column(nullable = false, length = 2000)
 	private String descricao;
 	private Date dataEntraga;
+	@Column(length = 1000)
 	private String obs;
 	@Column(nullable = false, precision = 7, scale = 2)
 	private BigDecimal valor;
@@ -37,7 +38,7 @@ public class PedidoReposicao {
 	public PedidoReposicao() {
 	}
 
-	public PedidoReposicao(Funcionario funcionario, Funcionario fornecedor, String descricao, String obs, BigDecimal valor) {
+	public PedidoReposicao(Funcionario funcionario, Fornecedor fornecedor, String descricao, String obs, BigDecimal valor) {
 		this.funcionario = funcionario;
 		this.fornecedor = fornecedor;
 		this.descricao = descricao;
@@ -73,11 +74,11 @@ public class PedidoReposicao {
 		this.funcionario = funcionario;
 	}
 
-	public Funcionario getFornecedor() {
+	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
 
-	public void setFornecedor(Funcionario fornecedor) {
+	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
 
