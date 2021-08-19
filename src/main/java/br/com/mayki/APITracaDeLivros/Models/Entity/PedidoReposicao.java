@@ -30,32 +30,23 @@ public class PedidoReposicao {
 	@Column(nullable = false, precision = 7, scale = 2)
 	private BigDecimal valor;
 	@Column(nullable = false)
-	private LocalDate created_at;
-	private LocalDate updated_at;
+	private LocalDate created;
+	private LocalDate updated;
 	@Column(nullable = false)
-	private Boolean delete_soft;
+	private Boolean deleteSoft;
 
 	public PedidoReposicao() {
 	}
 
-	public PedidoReposicao(Funcionario funcionario, Fornecedor fornecedor, String descricao, String obs, BigDecimal valor) {
+	public PedidoReposicao(Funcionario funcionario, Fornecedor fornecedor, String descricao, String obs,
+			BigDecimal valor) {
 		this.funcionario = funcionario;
 		this.fornecedor = fornecedor;
 		this.descricao = descricao;
 		this.obs = obs;
 		this.valor = valor;
-		this.created_at = LocalDate.now();
-		this.delete_soft = false;
-	}
-	
-	
-
-	public BigDecimal getValor() {
-		return valor;
-	}
-
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+		this.created = LocalDate.now();
+		this.deleteSoft = false;
 	}
 
 	public Long getId() {
@@ -106,28 +97,36 @@ public class PedidoReposicao {
 		this.obs = obs;
 	}
 
-	public LocalDate getCreated_at() {
-		return created_at;
+	public BigDecimal getValor() {
+		return valor;
 	}
 
-	public void setCreated_at(LocalDate created_at) {
-		this.created_at = created_at;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
-	public LocalDate getUpdated_at() {
-		return updated_at;
+	public LocalDate getCreated() {
+		return created;
 	}
 
-	public void setUpdated_at(LocalDate updated_at) {
-		this.updated_at = updated_at;
+	public void setCreated(LocalDate created) {
+		this.created = created;
 	}
 
-	public Boolean getDelete_soft() {
-		return delete_soft;
+	public LocalDate getUpdated() {
+		return updated;
 	}
 
-	public void setDelete_soft(Boolean delete_soft) {
-		this.delete_soft = delete_soft;
+	public void setUpdated(LocalDate updated) {
+		this.updated = updated;
+	}
+
+	public Boolean getDeleteSoft() {
+		return deleteSoft;
+	}
+
+	public void setDeleteSoft(Boolean deleteSoft) {
+		this.deleteSoft = deleteSoft;
 	}
 
 }

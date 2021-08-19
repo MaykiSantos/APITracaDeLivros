@@ -20,47 +20,45 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.mayki.APITracaDeLivros.Services.FuncionarioService;
+import br.com.mayki.APITracaDeLivros.Services.FornecedorService;
 import br.com.mayki.APITracaDeLivros.Utils.Exceptions.BuscaInvalidaException;
-import br.com.mayki.APITracaDeLivros.Views.Dto.FuncionarioDto;
-import br.com.mayki.APITracaDeLivros.Views.Form.FuncionarioForm;
+import br.com.mayki.APITracaDeLivros.Views.Dto.FornecedorDto;
+import br.com.mayki.APITracaDeLivros.Views.Form.FornecedorForm;
 
 @RestController
-@RequestMapping(value = "/funcionarios")
-public class FuncionarioController {
-
+@RequestMapping(value = "/fornecedores")
+public class FornecedorController{
+	
 	@Autowired
-	FuncionarioService service;
+	FornecedorService service;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Page<FuncionarioDto>> listar(
-			@PageableDefault(page = 0, size = 10, direction = Direction.ASC) Pageable page,
-			@RequestParam(required = false) String search) {
+	public ResponseEntity<Page<FornecedorDto>> listar(@PageableDefault(page = 0, size = 10, direction = Direction.ASC) Pageable page, @RequestParam(required = false) String search){
 		if(search == null) {
 			return service.listar(page);
 		}
 		return service.listar(page, search);
 	}
-
+	
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<FuncionarioDto> buscar(@PathVariable Long id) throws BuscaInvalidaException {
+	public ResponseEntity<FornecedorDto> buscar(@PathVariable Long id) throws BuscaInvalidaException{
 		return service.buscar(id);
 	}
-
+	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<FuncionarioDto> adicionar(@RequestBody @Valid FuncionarioForm form,
-			UriComponentsBuilder uriBuilder) throws BuscaInvalidaException {
+	public ResponseEntity<FornecedorDto> adicionar(@RequestBody @Valid FornecedorForm form, UriComponentsBuilder uriBuilder){
 		return service.adicionar(form, uriBuilder);
 	}
-
+	
 	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<FuncionarioDto> editar(@PathVariable Long id, @RequestBody FuncionarioForm form)
-			throws BuscaInvalidaException {
+	public ResponseEntity<FornecedorDto> editar(@PathVariable Long id, @RequestBody @Valid FornecedorForm form) throws BuscaInvalidaException{
 		return service.editar(id, form);
 	}
-
+	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<?> deletSoft(@PathVariable Long id) throws BuscaInvalidaException {
+	public ResponseEntity<?> deletSoft(@PathVariable Long id) throws BuscaInvalidaException{
 		return service.deletSoft(id);
 	}
+	
+
 }

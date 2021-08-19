@@ -51,12 +51,12 @@ public class FuncionarioDto {
 
 	public static Page<FuncionarioDto> paraPageDto(Page<Funcionario> funcionarioPage) {
 		return funcionarioPage.map(f ->
-			new FuncionarioDto(f.getId(), f.getNome(), f.getCpf(), f.getAtivo(), f.getCreated_at(), f.getUpdated_at())
+			new FuncionarioDto(f.getId(), f.getNome(), f.getCpf(), f.getAtivo(), f.getCreated(), f.getUpdated())
 		);
 	}
 
 	public static FuncionarioDto paraDto(Funcionario f) {
-		return new FuncionarioDto(f.getId(), f.getNome(), f.getCpf(), f.getAtivo(), f.getCreated_at(), f.getUpdated_at());
+		return new FuncionarioDto(f.getId(), f.getNome(), f.getCpf(), f.getAtivo(), f.getCreated(), f.getUpdated());
 	}
 
 }

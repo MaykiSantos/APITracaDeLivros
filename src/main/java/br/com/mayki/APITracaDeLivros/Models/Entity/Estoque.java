@@ -23,10 +23,10 @@ public class Estoque {
 	@Column(nullable = false)
 	private Character prateleira;
 	@Column(nullable = false)
-	private LocalDate created_at;
-	private LocalDate updated_at;
+	private LocalDate created;
+	private LocalDate updated;
 	@Column(nullable = false)
-	private Boolean delete_soft;
+	private Boolean deleteSoft;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "estoque")
 	private List<Produto> produto;
 
@@ -36,16 +36,8 @@ public class Estoque {
 	public Estoque(Integer corredor, Character prateleira) {
 		this.corredor = corredor;
 		this.prateleira = prateleira;
-		this.created_at = LocalDate.now();
-		this.delete_soft = false;
-	}
-
-	public List<Produto> getProduto() {
-		return produto;
-	}
-
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
+		this.created = LocalDate.now();
+		this.deleteSoft = false;
 	}
 
 	public Long getId() {
@@ -72,28 +64,36 @@ public class Estoque {
 		this.prateleira = prateleira;
 	}
 
-	public LocalDate getCreated_at() {
-		return created_at;
+	public LocalDate getCreated() {
+		return created;
 	}
 
-	public void setCreated_at(LocalDate created_at) {
-		this.created_at = created_at;
+	public void setCreated(LocalDate created) {
+		this.created = created;
 	}
 
-	public LocalDate getUpdated_at() {
-		return updated_at;
+	public LocalDate getUpdated() {
+		return updated;
 	}
 
-	public void setUpdated_at(LocalDate updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdated(LocalDate updated) {
+		this.updated = updated;
 	}
 
-	public Boolean getDelete_soft() {
-		return delete_soft;
+	public Boolean getDeleteSoft() {
+		return deleteSoft;
 	}
 
-	public void setDelete_soft(Boolean delete_soft) {
-		this.delete_soft = delete_soft;
+	public void setDeleteSoft(Boolean deleteSoft) {
+		this.deleteSoft = deleteSoft;
+	}
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 
 }

@@ -33,10 +33,10 @@ public class Cliente {
 	@Column(nullable = false)
 	private Boolean ativo;
 	@Column(nullable = false)
-	private LocalDate created_at;
-	private LocalDate updated_at;
+	private LocalDate created;
+	private LocalDate updated;
 	@Column(nullable = false)
-	private Boolean delete_soft;
+	private Boolean deleteSoft;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
 	private List<Endereco> endereco;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
@@ -57,24 +57,8 @@ public class Cliente {
 		this.telefone_01 = telefone_01;
 		this.telefone_02 = telefone_02;
 		this.ativo = ativo;
-		this.created_at = LocalDate.now();
-		this.delete_soft = false;
-	}
-
-	public List<Pedido> getPedidoDeCompra() {
-		return pedidoDeCompra;
-	}
-
-	public void setPedidoDeCompra(List<Pedido> pedidoDeCompra) {
-		this.pedidoDeCompra = pedidoDeCompra;
-	}
-
-	public List<Chamado> getChamado() {
-		return chamado;
-	}
-
-	public void setChamado(List<Chamado> chamado) {
-		this.chamado = chamado;
+		this.created = LocalDate.now();
+		this.deleteSoft = false;
 	}
 
 	public Long getId() {
@@ -83,14 +67,6 @@ public class Cliente {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public List<Endereco> getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
 	}
 
 	public String getNome() {
@@ -157,28 +133,52 @@ public class Cliente {
 		this.ativo = ativo;
 	}
 
-	public LocalDate getCreated_at() {
-		return created_at;
+	public LocalDate getCreated() {
+		return created;
 	}
 
-	public void setCreated_at(LocalDate created_at) {
-		this.created_at = created_at;
+	public void setCreated(LocalDate created) {
+		this.created = created;
 	}
 
-	public LocalDate getUpdated_at() {
-		return updated_at;
+	public LocalDate getUpdated() {
+		return updated;
 	}
 
-	public void setUpdated_at(LocalDate updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdated(LocalDate updated) {
+		this.updated = updated;
 	}
 
-	public Boolean getDelete_soft() {
-		return delete_soft;
+	public Boolean getDeleteSoft() {
+		return deleteSoft;
 	}
 
-	public void setDelete_soft(Boolean delete_soft) {
-		this.delete_soft = delete_soft;
+	public void setDeleteSoft(Boolean deleteSoft) {
+		this.deleteSoft = deleteSoft;
+	}
+
+	public List<Endereco> getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(List<Endereco> endereco) {
+		this.endereco = endereco;
+	}
+
+	public List<Chamado> getChamado() {
+		return chamado;
+	}
+
+	public void setChamado(List<Chamado> chamado) {
+		this.chamado = chamado;
+	}
+
+	public List<Pedido> getPedidoDeCompra() {
+		return pedidoDeCompra;
+	}
+
+	public void setPedidoDeCompra(List<Pedido> pedidoDeCompra) {
+		this.pedidoDeCompra = pedidoDeCompra;
 	}
 
 }

@@ -1,5 +1,6 @@
 package br.com.mayki.APITracaDeLivros.Views.Form;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -74,6 +75,21 @@ public class FuncionarioForm {
 			Funcionario funcionario = new Funcionario(nome, cpf, ativo, pl);
 			return repository.save(funcionario);
 		} catch (NoSuchElementException e) {
+			throw new BuscaInvalidaException("valores recebidos no atributo perfil são inválidos");
+		}
+	}
+
+
+	public void atualizar(Funcionario f, PerfilRepository perfilRepository) throws BuscaInvalidaException {
+		try {
+			List<Perfil> pl = this.perfil.stream().map(item -> perfilRepository.findBynome(item).get()).collect(Collectors.toList());
+			
+			f.setCpf(cpf);
+			f.setAtivo(ativo);
+			f.setNome(nome);
+			f.setPerfil(pl);
+			f.setUpdated(LocalDate.now());
+		} catch (NoSuchElementException  e) {
 			throw new BuscaInvalidaException("valores recebidos no atributo perfil são inválidos");
 		}
 	}

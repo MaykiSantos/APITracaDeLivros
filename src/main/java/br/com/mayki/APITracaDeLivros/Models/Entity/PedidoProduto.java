@@ -26,29 +26,21 @@ public class PedidoProduto {
 	@Column(nullable = false)
 	private LocalDate dataCompra;
 	@Column(nullable = false)
-	private LocalDate created_at;
-	private LocalDate updated_at;
+	private LocalDate created;
+	private LocalDate updated;
 	@Column(nullable = false)
-	private Boolean delete_soft;
+	private Boolean deleteSoft;
 
-	public PedidoProduto() {}
+	public PedidoProduto() {
+	}
 
 	public PedidoProduto(Pedido pedidoDeCompra, Produto produto, BigDecimal valorProduto) {
 		this.pedidoDeCompra = pedidoDeCompra;
 		this.produto = produto;
 		this.valorProduto = valorProduto;
 		this.dataCompra = LocalDate.now();
-		this.created_at = LocalDate.now();
-		this.delete_soft = false;
-	}
-
-	
-	public Pedido getPedidoDeCompra() {
-		return pedidoDeCompra;
-	}
-
-	public void setPedidoDeCompra(Pedido pedidoDeCompra) {
-		this.pedidoDeCompra = pedidoDeCompra;
+		this.created = LocalDate.now();
+		this.deleteSoft = false;
 	}
 
 	public Long getId() {
@@ -57,6 +49,14 @@ public class PedidoProduto {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Pedido getPedidoDeCompra() {
+		return pedidoDeCompra;
+	}
+
+	public void setPedidoDeCompra(Pedido pedidoDeCompra) {
+		this.pedidoDeCompra = pedidoDeCompra;
 	}
 
 	public Produto getProduto() {
@@ -83,28 +83,28 @@ public class PedidoProduto {
 		this.dataCompra = dataCompra;
 	}
 
-	public LocalDate getCreated_at() {
-		return created_at;
+	public LocalDate getCreated() {
+		return created;
 	}
 
-	public void setCreated_at(LocalDate created_at) {
-		this.created_at = created_at;
+	public void setCreated(LocalDate created) {
+		this.created = created;
 	}
 
-	public LocalDate getUpdated_at() {
-		return updated_at;
+	public LocalDate getUpdated() {
+		return updated;
 	}
 
-	public void setUpdated_at(LocalDate updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdated(LocalDate updated) {
+		this.updated = updated;
 	}
 
-	public Boolean getDelete_soft() {
-		return delete_soft;
+	public Boolean getDeleteSoft() {
+		return deleteSoft;
 	}
 
-	public void setDelete_soft(Boolean delete_soft) {
-		this.delete_soft = delete_soft;
+	public void setDeleteSoft(Boolean deleteSoft) {
+		this.deleteSoft = deleteSoft;
 	}
 
 }

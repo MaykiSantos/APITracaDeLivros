@@ -20,47 +20,46 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.mayki.APITracaDeLivros.Services.FuncionarioService;
+import br.com.mayki.APITracaDeLivros.Services.EnderecoService;
 import br.com.mayki.APITracaDeLivros.Utils.Exceptions.BuscaInvalidaException;
-import br.com.mayki.APITracaDeLivros.Views.Dto.FuncionarioDto;
-import br.com.mayki.APITracaDeLivros.Views.Form.FuncionarioForm;
+import br.com.mayki.APITracaDeLivros.Views.Dto.EnderecoDto;
+import br.com.mayki.APITracaDeLivros.Views.Form.EnderecoForm;
 
 @RestController
-@RequestMapping(value = "/funcionarios")
-public class FuncionarioController {
+@RequestMapping("/enderecos")
+public class EnderecoController {
 
 	@Autowired
-	FuncionarioService service;
+	EnderecoService service;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Page<FuncionarioDto>> listar(
+	public ResponseEntity<Page<EnderecoDto>> listar(
 			@PageableDefault(page = 0, size = 10, direction = Direction.ASC) Pageable page,
-			@RequestParam(required = false) String search) {
+			@RequestParam(required = false) String search, UriComponentsBuilder uriBuilder) {
 		if(search == null) {
-			return service.listar(page);
+			return service.listar(page, uriBuilder);			
 		}
-		return service.listar(page, search);
+		return service.listar(page, search, uriBuilder);
 	}
-
+	
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<FuncionarioDto> buscar(@PathVariable Long id) throws BuscaInvalidaException {
-		return service.buscar(id);
+	public ResponseEntity<EnderecoDto> buscar(@PathVariable Long id, UriComponentsBuilder uriBuilder) throws BuscaInvalidaException{
+		return service.buscar(id, uriBuilder);
 	}
-
+	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<FuncionarioDto> adicionar(@RequestBody @Valid FuncionarioForm form,
-			UriComponentsBuilder uriBuilder) throws BuscaInvalidaException {
+	public ResponseEntity<EnderecoDto> adicionar(@RequestBody @Valid EnderecoForm form, UriComponentsBuilder uriBuilder) throws BuscaInvalidaException{
 		return service.adicionar(form, uriBuilder);
 	}
-
+	
 	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<FuncionarioDto> editar(@PathVariable Long id, @RequestBody FuncionarioForm form)
-			throws BuscaInvalidaException {
-		return service.editar(id, form);
+	public ResponseEntity<EnderecoDto> editar(@PathVariable Long id, @RequestBody @Valid EnderecoForm form,
+			UriComponentsBuilder uriBuilder) throws BuscaInvalidaException{
+		return service.editar(id, form, uriBuilder);
 	}
-
+	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<?> deletSoft(@PathVariable Long id) throws BuscaInvalidaException {
+	public ResponseEntity<?> deletSoft(@PathVariable Long id) throws BuscaInvalidaException{
 		return service.deletSoft(id);
 	}
 }

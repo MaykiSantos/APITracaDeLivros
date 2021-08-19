@@ -30,7 +30,7 @@ public class Fornecedor {
 	private String bairro;
 	@Column(nullable = false, length = 60)
 	private String cidade;
-	@Column(nullable = false, length = 8)
+	@Column(nullable = false, length = 9)
 	private String cep;
 	@Column(nullable = false, length = 10)
 	private String numero;
@@ -47,10 +47,10 @@ public class Fornecedor {
 	@Column(length = 60)
 	private String email_03;
 	@Column(nullable = false)
-	private LocalDate created_at;
-	private LocalDate updated_at;
+	private LocalDate created;
+	private LocalDate updated;
 	@Column(nullable = false)
-	private Boolean delete_soft;
+	private Boolean deleteSoft;
 	@OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
 	private List<Produto> produto;
 	@OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
@@ -76,24 +76,8 @@ public class Fornecedor {
 		this.email_01 = email_01;
 		this.email_02 = email_02;
 		this.email_03 = email_03;
-		this.created_at = LocalDate.now();
-		this.delete_soft = false;
-	}
-
-	public List<PedidoReposicao> getPeidoRposicao() {
-		return peidoReposicao;
-	}
-
-	public void setPeidoRposicao(List<PedidoReposicao> peidoRposicao) {
-		this.peidoReposicao = peidoRposicao;
-	}
-
-	public List<Produto> getProduto() {
-		return produto;
-	}
-
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
+		this.created = LocalDate.now();
+		this.deleteSoft = false;
 	}
 
 	public Long getId() {
@@ -110,6 +94,14 @@ public class Fornecedor {
 
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
+	}
+
+	public String getInscricaoEstadual() {
+		return inscricaoEstadual;
+	}
+
+	public void setInscricaoEstadual(String inscricaoEstadual) {
+		this.inscricaoEstadual = inscricaoEstadual;
 	}
 
 	public String getNome() {
@@ -208,28 +200,44 @@ public class Fornecedor {
 		this.email_03 = email_03;
 	}
 
-	public LocalDate getCreated_at() {
-		return created_at;
+	public LocalDate getCreated() {
+		return created;
 	}
 
-	public void setCreated_at(LocalDate created_at) {
-		this.created_at = created_at;
+	public void setCreated(LocalDate created) {
+		this.created = created;
 	}
 
-	public LocalDate getUpdated_at() {
-		return updated_at;
+	public LocalDate getUpdated() {
+		return updated;
 	}
 
-	public void setUpdated_at(LocalDate updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdated(LocalDate updated) {
+		this.updated = updated;
 	}
 
-	public Boolean getDelete_soft() {
-		return delete_soft;
+	public Boolean getDeleteSoft() {
+		return deleteSoft;
 	}
 
-	public void setDelete_soft(Boolean delete_soft) {
-		this.delete_soft = delete_soft;
+	public void setDeleteSoft(Boolean deleteSoft) {
+		this.deleteSoft = deleteSoft;
+	}
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
+
+	public List<PedidoReposicao> getPeidoReposicao() {
+		return peidoReposicao;
+	}
+
+	public void setPeidoReposicao(List<PedidoReposicao> peidoReposicao) {
+		this.peidoReposicao = peidoReposicao;
 	}
 
 }
