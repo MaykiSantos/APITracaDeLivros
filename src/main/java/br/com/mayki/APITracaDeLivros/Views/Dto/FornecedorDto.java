@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import org.springframework.data.domain.Page;
 
 import br.com.mayki.APITracaDeLivros.Models.Entity.Fornecedor;
+import br.com.mayki.APITracaDeLivros.Utils.Formata;
 
 public class FornecedorDto {
 
@@ -32,13 +33,13 @@ public class FornecedorDto {
 			String email_01, String email_02, String email_03, LocalDate created, LocalDate updated) {
 		this.id = id;
 		this.nome = nome;
-		this.cnpj = cnpj;
-		this.inscricaoEstadual = inscricaoEstadual;
+		this.cnpj = Formata.cnpj(cnpj);
+		this.inscricaoEstadual = Formata.inscricaoEstadual(inscricaoEstadual);
 		this.cidade = cidade;
 		this.bairro = bairro;
 		this.rua = rua;
 		this.numero = numero;
-		this.cep = cep;
+		this.cep = Formata.cep(cep);
 		this.telefone_01 = telefone_01;
 		this.telefone_02 = telefone_02;
 		this.telefone_03 = telefone_03;

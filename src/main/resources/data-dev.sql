@@ -12,11 +12,11 @@ INSERT INTO `categoria` (`dtype`, `id`, `created`, `delete_soft`, `nome`, `updat
 ('PAPELARIA', NULL, '2021-08-15', b'0', 'Pastas', NULL);
 
 INSERT INTO `cliente` (`id`, `ativo`, `cpf`, `created`, `data_nascimento`, `delete_soft`, `email`, `nome`, `senha`, `telefone_01`, `telefone_02`, `updated`) VALUES 
-(NULL, b'1', '314.431.786-16', '2021-08-15', '2000-07-18', b'0', 'priscilaluanamirellavieira-93@kimmay.com.br', 'Priscila Luana Mirella Vieira', '46nSW8cE1F', '(11) 3617-9872', '(11) 98911-7164', NULL), 
-(NULL, b'1', '803.676.079-72', '2021-08-15', '1996-03-20', b'0', 'rafaelamaitenogueira__rafaelamaitenogueira@stembalagens.com.br', 'Rafaela Maitê Nogueira', 'IQ1g8nHDWF', '(95) 3565-6059', '(95) 98770-8847', NULL), 
-(NULL, b'1', '216.834.092-72', '2021-08-15', '1957-06-08', b'0', 'gustavonicolasjesus_@br.ibm.com', 'Gustavo Nicolas Jesus', 'q81UxLx0G9', '(54) 2657-8994', '(54) 98166-7677', NULL), 
-(NULL, b'1', '254.914.156-34', '2021-08-16', '1987-04-18', '', 'brunalizvalentinasantos-82@utbr.com.br', 'Bruna Liz Valentina Santos', 'K3Kl1UFB5u', '(96) 3531-8389', '(96) 98955-8766', NULL), 
-(NULL, b'1', '677.672.995-62', '2021-08-15', '1981-05-19', b'0', 'gaelseverinonunes_@andrediaz.com', 'Gael Severino Nunes', 'rEtcqgpobK', '(95) 2956-8204', '(95) 98516-8549', NULL);
+(NULL, b'1', '31443178616', '2021-08-15', '2000-07-18', b'0', 'priscilaluanamirellavieira-93@kimmay.com.br', 'Priscila Luana Mirella Vieira', '46nSW8cE1F', '(11) 3617-9872', '(11) 98911-7164', NULL), 
+(NULL, b'1', '80367607972', '2021-08-15', '1996-03-20', b'0', 'rafaelamaitenogueira__rafaelamaitenogueira@stembalagens.com.br', 'Rafaela Maitê Nogueira', 'IQ1g8nHDWF', '(95) 3565-6059', '(95) 98770-8847', NULL), 
+(NULL, b'1', '21683409272', '2021-08-15', '1957-06-08', b'0', 'gustavonicolasjesus_@br.ibm.com', 'Gustavo Nicolas Jesus', 'q81UxLx0G9', '(54) 2657-8994', '(54) 98166-7677', NULL), 
+(NULL, b'1', '25491415634', '2021-08-16', '1987-04-18', '', 'brunalizvalentinasantos-82@utbr.com.br', 'Bruna Liz Valentina Santos', 'K3Kl1UFB5u', '(96) 3531-8389', '(96) 98955-8766', NULL), 
+(NULL, b'1', '67767299562', '2021-08-15', '1981-05-19', b'0', 'gaelseverinonunes_@andrediaz.com', 'Gael Severino Nunes', 'rEtcqgpobK', '(95) 2956-8204', '(95) 98516-8549', NULL);
 
 INSERT INTO `endereco` (`id`, `bairro`, `cep`, `cidade`, `created`, `delete_soft`, `numero`, `rua`, `updated`, `cliente_id`) VALUES 
 (NULL, 'Colônia Terra Nova', '69093489', 'Manaus', '2021-08-15', b'0', '213', 'Rua das Pedreiras', NULL, '1'),
@@ -55,9 +55,9 @@ INSERT INTO `perfil` (`id`, `nome`) VALUES
 (NULL, 'ROLE_ADMIN');
 
 INSERT INTO `fornecedor` (`id`, `bairro`, `cep`, `cidade`, `cnpj`, `created`, `delete_soft`, `email_01`, `email_02`, `email_03`, `inscricao_estadual`, `nome`, `numero`, `rua`, `telefone_01`, `telefone_02`, `telefone_03`, `updated`) VALUES 
-(NULL, 'Jardim Canaã II', '13848-846', 'Mogi Guaçu', '93.617.232/0001-74', '2021-08-15', b'0', 'marketing@pietraeisaacpaesedocesme.com.br', NULL, NULL, '264.904.542.261', 'Pietra e Isaac Pães e Doces ME', '554', 'Rua José Nunes de Matos', '(19) 2628-2036', '(19) 98497-5798', NULL, NULL), 
-(NULL, 'Centro', '07403-010', 'Arujá', '88.761.229/0001-90', '2021-08-15', b'0', 'financeiro@laiseagathaesportesme.com.br', 'financeiro2@laiseagathaesportesme.com.br', 'vendas4@laiseagathaesportesme.com.br', '064.274.662.975', 'Laís e Agatha Esportes ME', '573', 'Rua Antonio Francisco de Lima', '', '(11) 3597-7322', '(11) 99104-7270', NULL), 
-(NULL, 'Argemiro', '48901-090', 'Juazeiro', '25.246.700/0001-91', '2021-08-15', b'0', 'vendas@patriciaenaircomerciodebebidasme.com.br', 'vendas2@patriciaenaircomerciodebebidasme.com.br', NULL, '249014-46', 'Patrícia e Nair Comercio de Bebidas ME', '510', 'Loteamento Argemiro', '(74) 2942-9259', '(74) 98847-2143', NULL, NULL);
+(NULL, 'Jardim Canaã II', '13848846', 'Mogi Guaçu', '93617232000174', '2021-08-15', b'0', 'marketing@pietraeisaacpaesedocesme.com.br', NULL, NULL, '264904542261', 'Pietra e Isaac Pães e Doces ME', '554', 'Rua José Nunes de Matos', '(19) 2628-2036', '(19) 98497-5798', NULL, NULL), 
+(NULL, 'Centro', '07403010', 'Arujá', '88761229000190', '2021-08-15', b'0', 'financeiro@laiseagathaesportesme.com.br', 'financeiro2@laiseagathaesportesme.com.br', 'vendas4@laiseagathaesportesme.com.br', '064274662975', 'Laís e Agatha Esportes ME', '573', 'Rua Antonio Francisco de Lima', '', '(11) 3597-7322', '(11) 99104-7270', NULL), 
+(NULL, 'Argemiro', '48901090', 'Juazeiro', '25246700000191', '2021-08-15', b'0', 'vendas@patriciaenaircomerciodebebidasme.com.br', 'vendas2@patriciaenaircomerciodebebidasme.com.br', NULL, '264904542444', 'Patrícia e Nair Comercio de Bebidas ME', '510', 'Loteamento Argemiro', '(74) 2942-9259', '(74) 98847-2143', NULL, NULL);
 
 INSERT INTO `funcionario` (`id`, `ativo`, `cpf`, `created`, `delete_soft`, `nome`, `updated`) VALUES 
 (NULL, b'0', '790.152.322-02', '2021-08-15', b'0', 'Stefany Juliana Beatriz Peixoto', NULL), 

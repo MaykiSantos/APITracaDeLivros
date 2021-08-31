@@ -7,6 +7,7 @@ import javax.validation.constraints.Pattern;
 
 import br.com.mayki.APITracaDeLivros.Models.Entity.Fornecedor;
 import br.com.mayki.APITracaDeLivros.Models.Repository.FornecedorRepository;
+import br.com.mayki.APITracaDeLivros.Utils.Formata;
 
 public class FornecedorForm {
 
@@ -170,19 +171,19 @@ public class FornecedorForm {
 
 	public Fornecedor parafornecedor(FornecedorRepository fornecedorRepository) {
 
-		Fornecedor f = new Fornecedor(cnpj, inscricaoEstadual, nome, rua, bairro, cidade, cep, numero, telefone_01,
+		Fornecedor f = new Fornecedor(Formata.cnpj(cnpj), Formata.inscricaoEstadual(inscricaoEstadual), nome, rua, bairro, cidade, Formata.cpf(cep), numero, telefone_01,
 				telefone_02, telefone_03, email_01, email_02, email_03);
 		return fornecedorRepository.save(f);
 	}
 
 	public void atualizar(Fornecedor f) {
-		f.setCnpj(this.cnpj);
-		f.setInscricaoEstadual(this.inscricaoEstadual);
+		f.setCnpj(Formata.cnpj(this.cnpj));
+		f.setInscricaoEstadual(Formata.inscricaoEstadual(this.inscricaoEstadual));
 		f.setNome(this.nome);
 		f.setRua(this.rua);
 		f.setBairro(this.bairro);
 		f.setCidade(this.cidade);
-		f.setCep(this.cep);
+		f.setCep(Formata.cep(this.cep));
 		f.setNumero(this.numero);
 		f.setTelefone_01(this.telefone_01);
 		f.setTelefone_02(this.telefone_02);

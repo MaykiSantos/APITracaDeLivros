@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.mayki.APITracaDeLivros.Models.Entity.Endereco;
+import br.com.mayki.APITracaDeLivros.Utils.MontaLinks;
 
 public class EnderecoDto {
 
@@ -81,7 +82,8 @@ public class EnderecoDto {
 	public static Page<EnderecoDto> paraPageDto(Page<Endereco> enderecoPage, UriComponentsBuilder uriBuilder) {
 
 		Page<EnderecoDto> pageEnderecoDto = enderecoPage.map(e -> {
-			Map<String, URI> linksUteis = Map.of("cliente", uriBuilder.cloneBuilder().path("/clientes/{id}").build(e.getCliente().getId()));
+			Map<String, URI> linksUteis = MontaLinks.executar(uriBuilder, "cliente", "/clientes/{id}", e.getCliente().getId());
+					//Map.of("cliente", uriBuilder.cloneBuilder().path("/clientes/{id}").build(e.getCliente().getId()));
 			return new EnderecoDto(e.getId(), e.getCidade(), e.getBairro(), e.getRua(), e.getNumero(), e.getCep(), e.getCliente().getId(), e.getCreated(), e.getUpdated(), linksUteis);
 		});
 		
@@ -90,7 +92,7 @@ public class EnderecoDto {
 
 	public static EnderecoDto paraDto(Endereco e, UriComponentsBuilder uriBuilder) {
 		
-		Map<String, URI> linksUteis = Map.of("cliente", uriBuilder.path("/clientes/{id}").build(e.getCliente().getId()));
+		Map<String, URI> linksUteis = MontaLinks.executar(uriBuilder, "cliente", "/clientes/{id}", e.getCliente().getId());
 		return new EnderecoDto(e.getId(), e.getCidade(), e.getBairro(), e.getRua(), e.getNumero(), e.getCep(), e.getCliente().getId(), e.getCreated(), e.getUpdated(), linksUteis);
 	}
 

@@ -24,7 +24,7 @@ public class PedidoReposicao {
 	private Fornecedor fornecedor;
 	@Column(nullable = false, length = 2000)
 	private String descricao;
-	private Date dataEntraga;
+	private LocalDate dataEntraga;
 	@Column(length = 1000)
 	private String obs;
 	@Column(nullable = false, precision = 7, scale = 2)
@@ -81,11 +81,11 @@ public class PedidoReposicao {
 		this.descricao = descricao;
 	}
 
-	public Date getDataEntraga() {
+	public LocalDate getDataEntraga() {
 		return dataEntraga;
 	}
 
-	public void setDataEntraga(Date dataEntraga) {
+	public void setDataEntraga(LocalDate dataEntraga) {
 		this.dataEntraga = dataEntraga;
 	}
 

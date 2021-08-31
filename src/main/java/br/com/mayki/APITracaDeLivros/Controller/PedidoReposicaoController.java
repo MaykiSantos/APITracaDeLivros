@@ -1,4 +1,6 @@
-package br.com.mayki.APITracaDeLivros.Models.Controller;
+package br.com.mayki.APITracaDeLivros.Controller;
+
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -19,47 +21,51 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.mayki.APITracaDeLivros.Services.ChamadoService;
+import br.com.mayki.APITracaDeLivros.Services.PedidoReposicaoService;
 import br.com.mayki.APITracaDeLivros.Utils.Exceptions.BuscaInvalidaException;
-import br.com.mayki.APITracaDeLivros.Views.Dto.ChamadoDto;
-import br.com.mayki.APITracaDeLivros.Views.Form.ChamadoForm;
+import br.com.mayki.APITracaDeLivros.Utils.Exceptions.DataInvalidaException;
+import br.com.mayki.APITracaDeLivros.Views.Dto.PedidoReposicaoDto;
+import br.com.mayki.APITracaDeLivros.Views.Dto.TesteDto;
+import br.com.mayki.APITracaDeLivros.Views.Form.PedidoReposicaoAtualizarForm;
+import br.com.mayki.APITracaDeLivros.Views.Form.PedidoReposicaoForm;
 
 @RestController
-@RequestMapping("/chamados")
-public class ChamadoController {
+@RequestMapping("pedidos_reposicao")
+public class PedidoReposicaoController {
 
 	@Autowired
-	ChamadoService service;
+	PedidoReposicaoService service;
 
 	@GetMapping
-	public ResponseEntity<Page<ChamadoDto>> listar(
+	public ResponseEntity<Page<PedidoReposicaoDto>> listar(
 			@PageableDefault(page = 0, size = 10, direction = Direction.ASC) Pageable page,
-			UriComponentsBuilder uriBuilder) {
-		return service.listar(page, uriBuilder);
+			@RequestParam(required = false) String search) {
+		if (search == null) {
+			return service.listar(page);
+		}
+		return service.listar(page, search);
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ChamadoDto> buscar(@PathVariable Long id, UriComponentsBuilder uriBuilder)
-			throws BuscaInvalidaException {
-		return service.buscar(id, uriBuilder);
+	public ResponseEntity<PedidoReposicaoDto> buscar(@PathVariable Long id) throws BuscaInvalidaException {
+		return service.buscar(id);
 	}
 
 	@PostMapping
-	public ResponseEntity<ChamadoDto> adicionar(@RequestBody @Valid ChamadoForm form, UriComponentsBuilder uriBuilder)
-			throws BuscaInvalidaException {
+	public ResponseEntity<PedidoReposicaoDto> adicionar(@Valid @RequestBody PedidoReposicaoForm form,
+			UriComponentsBuilder uriBuilder) throws BuscaInvalidaException {
 		return service.adicionar(form, uriBuilder);
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ChamadoDto> editar(@PathVariable Long id, @RequestBody @Valid ChamadoForm form,
-			UriComponentsBuilder uriBilder) throws BuscaInvalidaException {
-		return service.editar(id, form, uriBilder);
+	public ResponseEntity<PedidoReposicaoDto> atualizar(@PathVariable Long id,
+			@RequestBody @Valid PedidoReposicaoAtualizarForm form) throws DataInvalidaException, BuscaInvalidaException {
+		return service.atualizar(id, form);
 	}
 	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<?> deletSoft(@PathVariable Long id) throws BuscaInvalidaException{
 		return service.deletSoft(id);
 	}
-	
-	
+
 }

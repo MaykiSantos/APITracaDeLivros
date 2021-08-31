@@ -71,7 +71,7 @@ public class ChamadoDto {
 	public static Page<ChamadoDto> paraPageDto(Page<Chamado> chamadoPage, UriComponentsBuilder uriBuilder) {
 		return chamadoPage.map(c ->{
 			Map<String, URI> ll = new HashMap<String, URI>();
-			ll.putAll(MontaLinks.executar(uriBuilder, "cliente", "clientes", c.getCliente().getId()));
+			ll.putAll(MontaLinks.executar(uriBuilder, "cliente", "/clientes/{id}", c.getCliente().getId()));
 			return new ChamadoDto(c.getId(), c.getAtendido(), c.getTitulo(), c.getDescricao(), c.getCliente().getId(),
 					c.getUpdated(), c.getCreated(), ll);
 		});
@@ -79,7 +79,7 @@ public class ChamadoDto {
 
 	public static ChamadoDto paraDto(Chamado c, UriComponentsBuilder uriBuilder) {
 		Map<String, URI> ll = new HashMap<String, URI>();
-		ll.putAll(MontaLinks.executar(uriBuilder, "cliente", "clientes", c.getCliente().getId()));
+		ll.putAll(MontaLinks.executar(uriBuilder, "cliente", "/clientes/{id}", c.getCliente().getId()));
 		return new ChamadoDto(c.getId(), c.getAtendido(), c.getTitulo(), c.getDescricao(), c.getCliente().getId(),
 				c.getUpdated(), c.getCreated(), ll);
 	}

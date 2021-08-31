@@ -16,4 +16,6 @@ public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
 
 	Optional<Endereco> findByIdAndDeleteSoft(Long id, boolean b);
 
+	Page<Endereco> findByDeleteSoftAndCliente_id(Pageable page, boolean b, Long id);
+
 }

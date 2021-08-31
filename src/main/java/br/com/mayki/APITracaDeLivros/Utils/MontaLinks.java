@@ -9,7 +9,7 @@ public class MontaLinks {
 	
 	public static Map<String, URI> executar(UriComponentsBuilder uriBuilder, String descricao, String path, Long identificador){
 		
-		return Map.of(descricao, uriBuilder.cloneBuilder().path("/" + path + "/{id}").build(identificador));
+		return Map.of(descricao, uriBuilder.cloneBuilder().path(path).build(identificador));
 	}
 
 }

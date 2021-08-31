@@ -16,4 +16,8 @@ public interface ChamadoRepository extends JpaRepository<Chamado, Long> {
 
 	Optional<Chamado> findByIdAndDeleteSoft(Long id, boolean b);
 
+	boolean existsByIdAndDeleteSoft(Long id, boolean b);
+
+	Page<Chamado> findByDeleteSoftAndCliente_id(Pageable page, boolean b, Long id);
+
 }

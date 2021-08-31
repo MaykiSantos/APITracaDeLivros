@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import br.com.mayki.APITracaDeLivros.Utils.Exceptions.BuscaInvalidaException;
+import br.com.mayki.APITracaDeLivros.Utils.Exceptions.DataInvalidaException;
 import br.com.mayki.APITracaDeLivros.Views.Dto.ErroSimplesDto;
 
 @RestControllerAdvice
@@ -44,5 +45,10 @@ public class TratamentoErros {
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<ErroSimplesDto> trataDataIntegrityViolationException(DataIntegrityViolationException e){
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErroSimplesDto.montar("algum atributo em conflito (duplicidade no DB). Refatorar tratamneto deste erro."));
+	}
+	
+	@ExceptionHandler(DataInvalidaException.class)
+	public ResponseEntity<ErroSimplesDto> trataDataInvalidaException(DataInvalidaException e){
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErroSimplesDto.montar(e.getMessage()));
 	}
 }

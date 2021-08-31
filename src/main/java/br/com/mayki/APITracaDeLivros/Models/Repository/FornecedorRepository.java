@@ -15,5 +15,10 @@ public interface FornecedorRepository extends JpaRepository<Fornecedor, Long> {
 
 	Optional<Fornecedor> findByIdAndDeleteSoft(Long id, boolean b);
 
+	Fornecedor findByNome(String search);
+
+	Fornecedor findByDeleteSoftAndNomeLike(boolean b, String string);
+
+
 
 }
